@@ -1,3 +1,4 @@
+site/config.php
 vendor/
 .DS_Store?
 .DS_Store
@@ -37,3 +38,4 @@ wire/modules/Inputfield/InputfieldDatetime/jquery-ui-timepicker-addon.min.js
 wire/modules/Jquery/JqueryFancybox/
 wire/modules/Jquery/JqueryTableSorter/JqueryTableSorter.min.js
 pwx.php
+site/assets/

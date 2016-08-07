@@ -1,6 +1,4 @@
-<?php
-
-$content = <<<HTML
+<?php ob_start(); ?>
 	<div id="fh5co-page">
 		<nav id="fh5co-nav" role="navigation">
 			<ul>
@@ -29,7 +27,8 @@ $content = <<<HTML
 			</div>
 		</header>
 		<!-- data-colorbg="#8cc53e"  -->
-		<div class="fh5co-project js-fh5co-waypoint" data-bgcolor="" data-next="yes">
+		<?php foreach($pages->find("template=project, sort=-created, limit=5") as $key => $project) : ?>
+		<div class="fh5co-project js-fh5co-waypoint <?php echo $key % 2 == 0 ? '' : 'fh5co-reverse'?>" data-bgcolor="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<div class="fh5co-imgs col-md-8 animate-box">
@@ -41,76 +40,14 @@ $content = <<<HTML
 						</div>
 					</div>
 					<div class="fh5co-text col-md-4 animate-box">
-						<h2>Guide Landing Page</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="work_1.html" class="btn btn-light btn-outline transition">View Project</a></p>
+						<h2><?php echo $project->title; ?></h2>
+						<p><?php echo $project->summary; ?></p>
+						<p><a href="<?php echo $project->url; ?>" class="btn btn-light btn-outline transition">View Project</a></p>
 					</div>
 				</div>
 
 			</div>
 		</div>
-		<!-- data-colorbg="#FF6138" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
-			<div class="container">
-				<div class="fh5co-project-inner row">
-					<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
-						<div class="img-holder-1 animate-box">
-							<img src="images/work_2_large.jpg" alt="Free HTML5 Bootstrap Template">
-						</div>
-						<div class="img-holder-2 animate-box">
-							<img src="images/work_2_small.jpg" alt="Free HTML5 Bootstrap Template">
-						</div>
-					</div>
-					<div class="fh5co-text col-md-4 col-md-pull-8 animate-box">
-						<h2>Sprint for Portfolio</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="work_1.html" class="btn btn-light btn-outline transition">View Project</a></p>
-					</div>
-				</div>
-
-			</div>
-		</div>
-		
-		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
-			<div class="container">
-				<div class="fh5co-project-inner row">
-					<div class="fh5co-imgs col-md-8 animate-box">
-						<div class="img-holder-1 animate-box">
-							<img src="images/work_3_large.jpg" alt="Free HTML5 Bootstrap Template">
-						</div>
-						<div class="img-holder-2 animate-box">
-							<img src="images/work_3_small.jpg" alt="Free HTML5 Bootstrap Template">
-						</div>
-					</div>
-					<div class="fh5co-text col-md-4 animate-box">
-						<h2>Display for Business Website</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="work_1.html" class="btn btn-light btn-outline transition">View Project</a></p>
-					</div>
-				</div>
-
-			</div>
-		</div>
-		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
-			<div class="container">
-				<div class="fh5co-project-inner row">
-					<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
-						<div class="img-holder-1 animate-box">
-							<img src="images/work_4_large.jpg" alt="Free HTML5 Bootstrap Template">
-						</div>
-						<div class="img-holder-2 animate-box">
-							<img src="images/work_4_small.jpg" alt="Free HTML5 Bootstrap Template">
-						</div>
-					</div>
-					<div class="fh5co-text col-md-4 col-md-pull-8 animate-box">
-						<h2>Slant for Creatives</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<p><a href="work_1.html" class="btn btn-light btn-outline transition">View Project</a></p>
-					</div>
-				</div>
-
-			</div>
-		</div>
-HTML;
+		<?php endforeach; ?>
+<?php
+$content = ob_get_clean();
