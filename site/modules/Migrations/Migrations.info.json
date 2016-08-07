@@ -1,0 +1,16 @@
+{
+	"title": "Migrations",
+	"version": "0.1.5",
+	"summary": "Module to handle migration files in ProcessWire",
+	"author": "Benjamin Milde",
+	"href": "https://lostkobrakai.github.io/Migrations/",
+	"autoload": false,
+	"singular": false,
+	"requires": [
+		"PHP>=5.4.0",
+		"ProcessWire>=2.6.14"
+	],
+	"installs": [
+		"ProcessMigrations"
+	]
+}
