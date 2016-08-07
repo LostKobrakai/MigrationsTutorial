@@ -19,6 +19,7 @@ site-default/assets/files
 site-default/assets/sessions
 site-default/assets/cache
 site-default/assets/installed.php
+site/assets/logs/
 site-skyscrapers
 .htaccess
 tmp
