@@ -1,14 +1,7 @@
 <?php ob_start(); ?>
 	<div id="fh5co-page">
-		<nav id="fh5co-nav" role="navigation">
-			<ul>
-				<li class="animate-box"><a href="index.html" class="transition">Home</a></li>
-				<li class="animate-box"><a href="about.html" class="transition">Bio</a></li>
-			</ul>
-			<a class="style-toggle js-style-toggle" data-style="default" href="#">
-				<span class="fh5co-circle"></span>
-			</a>
-		</nav>
+		<?php include __DIR__ . '/_nav.php'; ?>
+		
 		<header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
 			<div class="container">
 				<div class="fh5co-text-wrap animate-box">
@@ -41,11 +34,18 @@
 							</div>
 						</div>
 
+						<?php if($page->project_images->count) : ?>
 						<div class="row animate-box">
 							<div class="col-md-12">
-								<figure><img src="images/macbook.png" class="img-responsive" alt="Free HTML5 Bootstrap Template"></figure>
+								<figure>
+									<?php 
+										$img = $page->project_images->get('tags=preview_macbook');
+										echo "<img src='$img->url' class='img-responsive' alt='$img->description'>";
+									?>
+								</figure>
 							</div>
 						</div>
+						<?php endif; ?>
 
 
 						<div class="row animate-box row-bottom-padded-sm ">
@@ -111,18 +111,20 @@
 							<div class="col-md-9">
 								<div class="flexslider">
 								  <ul class="slides">
+								  	<?php
+								  		$manual = $page->related_projects;
+								  		$limit = 5 - $page->related_projects->count;
+								  		$automatic = $pages->find("id!=$page->id, template=project, limit=$limit, sort=random");
+								  		foreach($manual->import($automatic) as $related) :
+								  			$url = $related->url;
+								  			$img = $page->project_images->get('tags=screenshot_desktop');
+								  	?>
 								    <li>
-								      <a href="work_1.html" class="transition"><img src="images/work_1_large.jpg" /></a>
+								      <a href="<?php echo $url; ?>" class="transition">
+								      	<img src="<?php echo $img->url; ?>" alt="<?php echo $img->description; ?>" />
+								      </a>
 								    </li>
-								    <li>
-								      <a href="work_1.html" class="transition"><img src="images/work_2_large.jpg" /></a>
-								    </li>
-								    <li>
-								      <a href="work_1.html" class="transition"><img src="images/work_3_large.jpg" /></a>
-								    </li>
-								    <li>
-								      <a href="work_1.html" class="transition"><img src="images/work_4_large.jpg" /></a>
-								    </li>
+								  	<?php endforeach; ?>
 								  </ul>
 								</div>
 							</div>

@@ -1,14 +1,6 @@
 <?php ob_start(); ?>
 	<div id="fh5co-page">
-		<nav id="fh5co-nav" role="navigation">
-			<ul>
-				<li class="animate-box fh5co-active"><a href="index.html" class="transition">Home</a></li>
-				<li class="animate-box"><a href="about.html" class="transition">Bio</a></li>
-			</ul>
-			<a class="style-toggle js-style-toggle" data-style="default" href="#">
-				<span class="fh5co-circle"></span>
-			</a>
-		</nav>
+		<?php include __DIR__ . '/_nav.php'; ?>
 		
 		<header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
 			<div class="container">
@@ -33,10 +25,12 @@
 				<div class="fh5co-project-inner row">
 					<div class="fh5co-imgs col-md-8 animate-box">
 						<div class="img-holder-1 animate-box">
-							<img src="images/work_1_large.jpg" alt="Free HTML5 Bootstrap Template">
+							<?php $img = $project->project_images->get('tags=screenshot_desktop'); ?>
+			      	<img src="<?php echo $img->url; ?>" alt="<?php echo $img->description; ?>" />
 						</div>
 						<div class="img-holder-2 animate-box">
-							<img src="images/work_1_small.jpg" alt="Free HTML5 Bootstrap Template">
+							<?php $img = $project->project_images->get('tags=screenshot_mobile'); ?>
+			      	<img src="<?php echo $img->url; ?>" alt="<?php echo $img->description; ?>" />
 						</div>
 					</div>
 					<div class="fh5co-text col-md-4 animate-box">
