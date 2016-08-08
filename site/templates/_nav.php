@@ -1,6 +1,7 @@
 <?php 
 	$links = array();
 	$links[] = $pages->get('/');
+	$links[] = $pages->get('/bio');
 ?>
 <nav id="fh5co-nav" role="navigation">
 	<ul>
