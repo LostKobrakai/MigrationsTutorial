@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 	<div id="fh5co-page">
 		<?php include __DIR__ . '/_nav.php'; ?>
-		
+
 		<header id="fh5co-header" role="banner" class="fh5co-project js-fh5co-waypoint no-border" data-colorbg="#222222" data-next="yes">
 			<div class="container">
 				<div class="fh5co-text-wrap animate-box">
@@ -86,9 +86,10 @@
 							</div>
 							<div class="col-md-9">
 								
+								<?php list($testimony, $author) = explode("\n---\n", $page->testimony, 2); ?>
 								<blockquote class="fh5co-testimony">
-									<p class="fh5co-quote">&ldquo;Design is the creation of a plan or convention for the construction of an object or a system as in architectural blueprints, engineering drawings, business processes, circuit diagrams and sewing patterns.&rdquo;</p>
-									<p><cite>&mdash; Ben Stellar, CEO &amp; Founder</cite></p>
+									<p class="fh5co-quote">&ldquo;<?php echo $testimony; ?>&rdquo;</p>
+									<p><cite>&mdash; <?php echo $author; ?></cite></p>
 								</blockquote>
 							</div>
 							
